@@ -177,11 +177,75 @@ body {
     padding: 0 20px;
 }
 
+.glitch-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
 .glitch-text {
     font-size: 4rem;
-    color: var(--electric-blue);
-    text-shadow: 0 0 20px var(--electric-blue);
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                 0.025em 0.04em 0 #fffc00;
+    animation: glitch 725ms infinite;
+}
+
+.glitch-text span {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.glitch-text span:first-child {
+    animation: glitch 500ms infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    transform: translate(-0.04em, -0.03em);
+    opacity: 0.75;
+}
+
+.glitch-text span:last-child {
+    animation: glitch 375ms infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    transform: translate(0.04em, 0.03em);
+    opacity: 0.75;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                     0.025em 0.04em 0 #fffc00;
+    }
+    15% {
+        text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                     0.025em 0.04em 0 #fffc00;
+    }
+    16% {
+        text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                     -0.05em -0.05em 0 #fffc00;
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                     -0.05em -0.05em 0 #fffc00;
+    }
+    50% {
+        text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                     0 -0.04em 0 #fffc00;
+    }
+    99% {
+        text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                     0 -0.04em 0 #fffc00;
+    }
+    100% {
+        text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
+                     -0.04em -0.025em 0 #fffc00;
+    }
+}
+
+.hero-content h1 {
     margin-bottom: 1rem;
+    color: var(--electric-blue);
 }
 
 #typed {
@@ -805,9 +869,7 @@ footer {
     }
 
     .glitch-text {
-        font-size: 2rem;
-        width: 100%;
-        text-align: center;
+        font-size: 2.5rem;
     }
 
     .slogan {
@@ -933,7 +995,7 @@ footer {
     }
 
     .glitch-text {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     .slogan {
@@ -998,71 +1060,5 @@ footer {
     .contact-form textarea {
         padding: 0.8rem;
         font-size: 0.9rem;
-    }
-}
-
-@keyframes glitch-anim {
-    0% {
-        clip: rect(42px, 9999px, 44px, 0);
-    }
-    5% {
-        clip: rect(12px, 9999px, 59px, 0);
-    }
-    10% {
-        clip: rect(48px, 9999px, 29px, 0);
-    }
-    15% {
-        clip: rect(42px, 9999px, 73px, 0);
-    }
-    20% {
-        clip: rect(63px, 9999px, 27px, 0);
-    }
-    25% {
-        clip: rect(34px, 9999px, 55px, 0);
-    }
-    30% {
-        clip: rect(86px, 9999px, 73px, 0);
-    }
-    35% {
-        clip: rect(20px, 9999px, 20px, 0);
-    }
-    40% {
-        clip: rect(26px, 9999px, 60px, 0);
-    }
-    45% {
-        clip: rect(25px, 9999px, 66px, 0);
-    }
-    50% {
-        clip: rect(57px, 9999px, 98px, 0);
-    }
-    55% {
-        clip: rect(5px, 9999px, 46px, 0);
-    }
-    60% {
-        clip: rect(82px, 9999px, 31px, 0);
-    }
-    65% {
-        clip: rect(54px, 9999px, 27px, 0);
-    }
-    70% {
-        clip: rect(28px, 9999px, 99px, 0);
-    }
-    75% {
-        clip: rect(45px, 9999px, 69px, 0);
-    }
-    80% {
-        clip: rect(23px, 9999px, 85px, 0);
-    }
-    85% {
-        clip: rect(54px, 9999px, 84px, 0);
-    }
-    90% {
-        clip: rect(45px, 9999px, 47px, 0);
-    }
-    95% {
-        clip: rect(37px, 9999px, 20px, 0);
-    }
-    100% {
-        clip: rect(4px, 9999px, 91px, 0);
     }
 }
