@@ -1,6 +1,6 @@
 # 🌟 Cybersecurity Portfolio - M. Vasanthadithya
 
-![Portfolio Preview](assets/images/portfolio-preview.png)
+
 
 A visually stunning, cyberpunk-themed portfolio website showcasing my journey in cybersecurity, ethical hacking, and software development. Built with modern web technologies and featuring dynamic animations, this portfolio reflects both my technical expertise and creative approach to security.
 
