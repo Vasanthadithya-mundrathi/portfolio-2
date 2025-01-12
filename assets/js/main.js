@@ -36,38 +36,50 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateAge, 1000 * 60 * 60 * 24); // Update daily
 
     // Matrix Rain Effect
-    const canvas = document.createElement('canvas');
+    const canvas = document.getElementById('matrix-canvas');
     const ctx = canvas.getContext('2d');
-    const matrixBg = document.querySelector('.matrix-bg');
-    matrixBg.appendChild(canvas);
 
-    canvas.width = matrixBg.offsetWidth;
-    canvas.height = matrixBg.offsetHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
+    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const nums = '0123456789';
+    const alphabet = katakana + latin + nums;
 
-    function drawMatrix() {
+    const fontSize = 16;
+    const columns = canvas.width/fontSize;
+
+    const rainDrops = [];
+
+    for(let x = 0; x < columns; x++) {
+        rainDrops[x] = 1;
+    }
+
+    function draw() {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         ctx.fillStyle = '#0F0';
         ctx.font = fontSize + 'px monospace';
-        
-        for (let i = 0; i < drops.length; i++) {
-            const text = characters.charAt(Math.floor(Math.random() * characters.length));
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        for(let i = 0; i < rainDrops.length; i++) {
+            const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+            ctx.fillText(text, i*fontSize, rainDrops[i]*fontSize);
             
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
+            if(rainDrops[i]*fontSize > canvas.height && Math.random() > 0.975) {
+                rainDrops[i] = 0;
             }
-            drops[i]++;
+            rainDrops[i]++;
         }
     }
 
-    setInterval(drawMatrix, 50);
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    setInterval(draw, 30);
 
     // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
